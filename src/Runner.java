@@ -18,13 +18,13 @@ public class Runner extends Actor {
 
 	public Runner() {
 		runImage1 = new GreenfootImage("runner1.png");
-		runImage1.scale(80, 80);
+		runImage1.scale(80, 110);
 
 		runImage2 = new GreenfootImage("runner3.png");
-		runImage2.scale(80, 80);
+		runImage2.scale(80, 110);
 
 		jumpImage = new GreenfootImage("runner2.png");
-		jumpImage.scale(80, 80);
+		jumpImage.scale(80, 110);
 
 		setImage(runImage1);
 	}
@@ -84,6 +84,10 @@ public class Runner extends Actor {
 			Greenfoot.playSound("pop.mp3");
 			removeTouching(Coin.class);
 			((RunnerWorld) getWorld()).addScore(1);
+		} else if (isTouching(Obstacle.class)) {
+			Greenfoot.playSound("false.mp3");
+			((RunnerWorld) getWorld()).removeScore(((Obstacle) getOneIntersectingObject(Obstacle.class)).getWidth() > 90 ? 20 : 10);
+			removeTouching(Obstacle.class);
 		}
 	}
 }
