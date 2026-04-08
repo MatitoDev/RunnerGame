@@ -5,12 +5,12 @@ public class Obstacle extends Actor {
 	public int width;
 	public Obstacle(int w) {
 		GreenfootImage img = new GreenfootImage("obstacle.png");
-		img.scale(width = w, 80);
+		img.scale(width = w, 80); //width = länge des Hindernisses
 		setImage(img);
 	}
 
 	public void act() {
-		setLocation(getX() - ((RunnerWorld) getWorld()).getObjectSpeed(), getY());
+		if (!((RunnerWorld) getWorld()).isGameOver()) setLocation(getX() - ((RunnerWorld) getWorld()).getObjectSpeed(), getY());
 		if (getX() <= 0) getWorld().removeObject(this);
 	}
 

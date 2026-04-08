@@ -1,7 +1,6 @@
 import greenfoot.*;
 
 public class Runner extends Actor {
-	private static final int SPEED = 4;
 	private static final int JUMP_STRENGTH = 22;
 	private static final int GRAVITY = 1;
 	private static final int GROUND_Y = 300;
@@ -20,10 +19,10 @@ public class Runner extends Actor {
 		runImage1 = new GreenfootImage("runner1.png");
 		runImage1.scale(80, 110);
 
-		runImage2 = new GreenfootImage("runner3.png");
+		runImage2 = new GreenfootImage("runner2.png");
 		runImage2.scale(80, 110);
 
-		jumpImage = new GreenfootImage("runner2.png");
+		jumpImage = new GreenfootImage("runner_jump.png");
 		jumpImage.scale(80, 110);
 
 		setImage(runImage1);
@@ -38,15 +37,11 @@ public class Runner extends Actor {
 		checkCollision();
 	}
 
-
+	//steuerung
 	private void jump() {
 		if ((Greenfoot.isKeyDown("up") || Greenfoot.isKeyDown("w") || Greenfoot.isKeyDown("space") || Greenfoot.mousePressed(null) ) && onGround) {
 			velocityY = -JUMP_STRENGTH;
 			onGround = false;
-		}
-
-		if ((Greenfoot.isKeyDown("down") || Greenfoot.isKeyDown("s") || Greenfoot.isKeyDown("c") || Greenfoot.mousePressed(null) ) && onGround) {
-			velocityY = JUMP_STRENGTH;
 		}
 	}
 
@@ -83,10 +78,10 @@ public class Runner extends Actor {
 		if (isTouching(Coin.class)) {
 			Greenfoot.playSound("pop.mp3");
 			removeTouching(Coin.class);
-			((RunnerWorld) getWorld()).addScore(1);
+			((RunnerWorld) getWorld()).addScore(1); //points für Münzen
 		} else if (isTouching(Obstacle.class)) {
 			Greenfoot.playSound("false.mp3");
-			((RunnerWorld) getWorld()).removeScore(((Obstacle) getOneIntersectingObject(Obstacle.class)).getWidth() > 90 ? 20 : 10);
+			((RunnerWorld) getWorld()).removeScore(((Obstacle) getOneIntersectingObject(Obstacle.class)).getWidth() > 90 ? 20 : 10); //-20 Punkte bei großen umd -10 bei kleinem Hindernis
 			removeTouching(Obstacle.class);
 		}
 	}

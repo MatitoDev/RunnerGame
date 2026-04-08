@@ -5,6 +5,7 @@ import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+//nur Util damit ich es besser in InteliJ starten kann
 public class RunnerGameLauncher extends Application {
     @Override
     public void start(Stage stage) {

@@ -8,7 +8,7 @@ public class Coin extends Actor {
 		setImage(img);
 	}
 	public void act() {
-		setLocation(getX() - ((RunnerWorld) getWorld()).getObjectSpeed(), getY());
+		if (!((RunnerWorld) getWorld()).isGameOver()) setLocation(getX() - ((RunnerWorld) getWorld()).getObjectSpeed(), getY());
 		if (getX() <= 0) getWorld().removeObject(this);
 	}
 }
