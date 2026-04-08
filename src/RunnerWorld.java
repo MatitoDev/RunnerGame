@@ -3,7 +3,7 @@ import greenfoot.World;
 
 public class RunnerWorld extends World {
 	public int objectSpeed = 8; //Speed der Objekte in Pixel pro Tick
-	public int ticks = 1; //akteller Tick
+	public int ticks = 1; //aktueller Tick
 	public boolean gameOver = false;
 	private int nextObject = 1; //nächstes Objekt wird bei diesem Tick gespawned
 	private int score = 0;
