@@ -1,0 +1,89 @@
+import greenfoot.*;
+
+public class Runner extends Actor {
+	private static final int SPEED = 4;
+	private static final int JUMP_STRENGTH = 22;
+	private static final int GRAVITY = 1;
+	private static final int GROUND_Y = 300;
+
+	private int velocityY = 0;
+	private boolean onGround = true;
+
+	private final GreenfootImage runImage1;
+	private final GreenfootImage runImage2;
+	private final GreenfootImage jumpImage;
+
+	private int animationCounter = 0;
+	private boolean animationIndecator = true;
+
+	public Runner() {
+		runImage1 = new GreenfootImage("runner1.png");
+		runImage1.scale(80, 80);
+
+		runImage2 = new GreenfootImage("runner3.png");
+		runImage2.scale(80, 80);
+
+		jumpImage = new GreenfootImage("runner2.png");
+		jumpImage.scale(80, 80);
+
+		setImage(runImage1);
+	}
+
+	@Override
+	public void act() {
+		jump();
+		applyGravity();
+		updateAnimation();
+
+		checkCollision();
+	}
+
+
+	private void jump() {
+		if ((Greenfoot.isKeyDown("up") || Greenfoot.isKeyDown("w") || Greenfoot.isKeyDown("space") || Greenfoot.mousePressed(null) ) && onGround) {
+			velocityY = -JUMP_STRENGTH;
+			onGround = false;
+		}
+
+		if ((Greenfoot.isKeyDown("down") || Greenfoot.isKeyDown("s") || Greenfoot.isKeyDown("c") || Greenfoot.mousePressed(null) ) && onGround) {
+			velocityY = JUMP_STRENGTH;
+		}
+	}
+
+	private void applyGravity() {
+		if (!onGround) {
+			setLocation(getX(), getY() + velocityY);
+			velocityY += GRAVITY;
+
+			if (getY() >= GROUND_Y) {
+				setLocation(getX(), GROUND_Y);
+				velocityY = 0;
+				onGround = true;
+			}
+		}
+	}
+
+	private void updateAnimation() {
+		if (onGround) {
+			runAnimation();
+		} else {
+			setImage(jumpImage);
+		}
+	}
+	private void runAnimation() {
+		animationCounter++;
+		if (animationCounter % 7 == 0) {
+			if (animationIndecator) setImage(runImage1);
+			else setImage(runImage2);
+			animationIndecator = !animationIndecator;
+		}
+	}
+
+	private void checkCollision() {
+		if (isTouching(Coin.class)) {
+			Greenfoot.playSound("pop.mp3");
+			removeTouching(Coin.class);
+			((RunnerWorld) getWorld()).addScore(1);
+		}
+	}
+}

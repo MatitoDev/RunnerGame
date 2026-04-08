@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Run Greenfoot" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="RunnerGameLauncher" />
+    <module name="RunnerGame" />
+    <option name="VM_PARAMETERS" value="--module-path=/usr/share/greenfoot/javafx-base-20.0.2-linux.jar:/usr/share/greenfoot/javafx-controls-20.0.2-linux.jar:/usr/share/greenfoot/javafx-fxml-20.0.2-linux.jar:/usr/share/greenfoot/javafx-graphics-20.0.2-linux.jar:/usr/share/greenfoot/javafx-media-20.0.2-linux.jar:/usr/share/greenfoot/javafx-swing-20.0.2-linux.jar:/usr/share/greenfoot/javafx-web-20.0.2-linux.jar --add-modules=javafx.controls,javafx.fxml,javafx.media,javafx.swing,javafx.web" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
