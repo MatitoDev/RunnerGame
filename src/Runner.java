@@ -13,7 +13,7 @@ public class Runner extends Actor {
 	private final GreenfootImage jumpImage;
 
 	private int animationCounter = 0;
-	private boolean animationIndecator = true;
+	private boolean animationIndicator = true;
 
 	public Runner() {
 		runImage1 = new GreenfootImage("runner1.png");
@@ -68,9 +68,9 @@ public class Runner extends Actor {
 	private void runAnimation() {
 		animationCounter++;
 		if (animationCounter % 7 == 0) {
-			if (animationIndecator) setImage(runImage1);
+			if (animationIndicator) setImage(runImage1);
 			else setImage(runImage2);
-			animationIndecator = !animationIndecator;
+			animationIndicator = !animationIndicator;
 		}
 	}
 
