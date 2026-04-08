@@ -4,6 +4,7 @@ Build with Greenfoot Engine.
 ## How to Run
 
 Open with [Greenfoot](https://greenfoot.org) should work.
+
 There is also a Run Config for IntelliJ IDEA.
 
 ## Config
